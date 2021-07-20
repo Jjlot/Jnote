@@ -1,5 +1,25 @@
 #+STARTUP: showall
 
+* neutron 命令行补全
+1. get completion file from:
+
+https://github.com/openstack/python-neutronclient/blob/master/tools/neutron.bash_completion
+
+2. put the file to:
+
+/etc/bash_completion.d
+
+# 把bash completion的运行提前到keystonerc阶段，可以提高后续补全的速度
+3. modify the line of nbc defination from nbc="`neutron bash-completion`" to:
+
+nbc=$NBC
+
+4. add new line to keystonrc file
+
+export NBC="`neutron bash-completion`"
+
+source /etc/bash_completion.d/neutron.bash_completion
+
 * pack stack
 ** install
 # <2021-06-30 Wed>

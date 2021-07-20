@@ -1541,15 +1541,6 @@ https://blog.csdn.net/bc_vnetwork/article/details/53939946
 
 ** click
 
-** lambda
-
-** @abc.abstractmethod
-修饰的抽象类的函数入参怎么写
-
-子类入参要完全一致吗
-
-可以控制子类必须包含哪些入参吗
-
 ** testr
 
 ** what is this?
@@ -1564,8 +1555,6 @@ coverage erase
 
 **  virtualenvwrapper
 virtualenvwrapper
-
-** threading local
 
 ** ipaddress
 python ipaddress模块使用
@@ -1601,11 +1590,7 @@ net2 = ipaddress.ip_network('192.168.1.0/26')
 list(net.address_exclude(net2))
 #+end_src
 
-** yield
-
 ** map / reduce
-
-** 为什么__new__(cls)然而__init__(self)
 
 ** with_for_update, with_lockmode (sqlalchemy)
 

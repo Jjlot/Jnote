@@ -760,3 +760,5 @@ tag
 
 ** zcat
 
+** /etc/bash_completion.d
+
