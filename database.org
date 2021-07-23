@@ -1,6 +1,27 @@
 #+STARTUP: showall
 #+OPTIONS: ^:nil
 
+* SQL - some notes
+** 主键
+主键不要带有业务含义，而应该使用BIGINT自增或者GUID类型。
+
+可以使用多个列作为联合主键，但联合主键并不常用。
+
+** 查询
+不带FROM子句的SELECT语句有一个有用的用途，就是用来判断当前到数据库的连接是否有效。许多检测工具会执行一条SELECT 1;来测试数据库连接。
+
+SELECT * FROM students WHERE score >= 80 AND gender = 'M';
+
+SELECT * FROM students WHERE score >= 80 OR gender = 'M';
+
+SELECT * FROM students WHERE NOT class_id = 2;
+
+SELECT * FROM students WHERE (score < 80 OR score > 90) AND gender = 'M';
+
+SELECT id, score points, name FROM students;
+
+
+
 * Mariadb - Systematic learning
 ** Create db
 CREATE DATABASE moka;
@@ -106,18 +127,38 @@ select * from ports limit 1;
 *** like
 select * from networks where name like 'jing%';
 
-*** sort
+*** sort & sort reverse
 select device_id from ports where device_owner = 'network:floatingip' order by device_id;
+
+select device_id from ports where device_owner = 'network:floatingip' order by device_id DESC;
 
 *** count
 select count(*) from floatingips;
 
-** Engine
-** utf8
-** table 注释
-** CONSTRAINT
+*** rename column
+SELECT id, score points, name FROM students;
 
-* MariaDB - Temporary record
+*** complacate conditions
+SELECT * FROM students WHERE (score < 80 OR score > 90) AND gender = 'M';
+
+*** 分页查询
+# 从1号记录开始，最多取10条
+select * from routerports limit 10 offset 1;
+# 简写
+select * from routerports limit 1, 10;
+
+*** count group
+select network_id, count(*) from ports group by network_id;
+
+*** inner join
+INNER JOIN只返回同时存在于两张表的行数据
+
+RIGHT OUTER JOIN返回右表都存在的行
+
+LEFT OUTER JOIN则返回左表都存在的行
+
+select p.id port_id, p.name port_name, p.network_id, n.name network_name from ports p inner join networks n on p.network_id = n.id limit 30;
+
 ** Update
 UPDATE floatingips SET fixed_port_id = 'NULL', fixed_ip_address = 'NULL', router_id = 'NULL' where fixed_port_id = '3bb7e43f-e5cc-44f9-8800-77c4a9e5d9d4';
 
@@ -125,6 +166,14 @@ UPDATE floatingips SET fixed_port_id = 'NULL', fixed_ip_address = 'NULL', router
 insert into natgateway_bypass (nat_gateway_id, fips) values ('123456', '100.1.1.1');
 
 INSERT INTO table_name ( field1, field2,...fieldN ) VALUES ( value1, value2,...valueN );
+
+** delete
+DELETE FROM students WHERE id=1;
+
+** Engine
+** utf8
+** table 注释
+** CONSTRAINT
 
 * Generic
 ** version
