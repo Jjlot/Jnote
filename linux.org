@@ -129,6 +129,11 @@ Host mubiaoji
  ProxyCommand ssh -q -x -W %h:%p tiaoban
 
 ** sed
+*** Display Specific Lines of a File
+sed -n '13p' file.txt
+
+sed -n '20,25p' lines.txt 
+
 *** Replacing all occurrences of one string with another in all files in the current directory
 find . -type f -exec sed -i 's/foo/bar/g' {} +
 

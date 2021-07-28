@@ -361,7 +361,7 @@ l = list(filter(is_odd, [1, 2, 4, 5, 6, 9, 10, 15]))
 print(l)
 #+end_src
 
-** map / reduce
+** map - list中元素运行一次f
 #+begin_src python :results output
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
@@ -378,6 +378,25 @@ r = map(f, l)
 print(list(l))
 print(list(r))
 #+end_src
+
+** reduce - list中元素运行f累积
+#+begin_src python :results output
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+def add(x, y) :            # 两数相加
+    return x + y
+sum1 = reduce(add, [1,2,3,4,5])   # 计算列表和：1+2+3+4+5
+sum2 = reduce(lambda x, y: x+y, [1,2,3,4,5])  # 使用 lambda 匿名函数
+print(sum1)
+print(sum2)
+#+end_src
+
+reduce(lambda x, y: x+y, [1,2,3,4,5])
+
+相当于lisp的
+
+(+ 1 2 3 4 5)
 
 ** list生成式
 #+begin_src python :results output
@@ -641,20 +660,48 @@ python3 -m site
 
 /usr/lib/python2.7/site-packages
 
-** virtualenv
-*** setup
+** python虚拟环境
+*** virtualenv
+**** setup
 pip install virtualenv
 
-*** create env
+**** create env
 virtualenv test-env
 
 virtualenv --no-site-packages venv
 
 virtualenv -p /usr/bin/python2.7 env27
 
-*** use & unuse
+**** use & unuse
 source env2.7/bin/activate
 
+deactivate
+
+*** virtualenvwrapper
+virtualenvwrapper
+
+**** setup
+pip install virtualenvwrapper
+
+# 如果使用 bash，则添加到 ~/.bashrc 中；如果使用 zsh，则添加到 ~/.zshrc 中。
+export WORKON_HOME=~/.virtualenvs
+
+source /usr/local/bin/virtualenvwrapper.sh
+
+**** usage
+# 新建虚拟环境
+mkvirtualenv
+
+# 列出虚拟环境列表
+workon
+
+# 切换虚拟环境
+workon [虚拟环境名称]:
+
+# 删除虚拟环境
+rmvirtualenv
+
+# 离开虚拟环境
 deactivate
 
 ** requirements
@@ -1553,49 +1600,9 @@ coverage erase
 
 ** fabric
 
-**  virtualenvwrapper
-virtualenvwrapper
-
-** ipaddress
-python ipaddress模块使用
-
-https://blog.csdn.net/fourinches/article/details/90447505
-
-#+begin_src python :results output
-import ipaddress
-
-ip = ipaddress.ip_address('192.168.0.1')
-ip = ipaddress.ip_address(0xc0a80001)
-ip = ipaddress.ip_address(0b11000000101010000000000000000001)
-ip = ipaddress.ip_address(b'\xc0\xa8\x00\x01')
-
-hex(int(ip))
-bin(int(ip))
-ip.packed
-
-
-ipaddress.ip_network('192.168.1.0/24')
-
-ipaddress.ip_network('192.168.1.1/24',strict=False)
-
-net = ipaddress.ip_network('192.168.1.0/24')
-
-net.num_addresses
-
-net.netmask
-
-type(net.hosts())
-
-net2 = ipaddress.ip_network('192.168.1.0/26')
-list(net.address_exclude(net2))
-#+end_src
-
-** map / reduce
-
-** with_for_update, with_lockmode (sqlalchemy)
+** with_for_update, with_lockmode (sqlalchemy) 
 
 ** python 生成器 send close
 了解了send close throw, 再回去看这篇
 https://www.liaoxuefeng.com/wiki/1016959663602400/1017968846697824
-
 

@@ -16,6 +16,13 @@ set -x
 set -e
 
 * Basic logic
+** check file exist
+#+begin_src sh
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+#+end_src
+
 ** if
 #+begin_src sh
 if [ $a == $b ]
