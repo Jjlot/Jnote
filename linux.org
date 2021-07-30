@@ -393,6 +393,14 @@ docker rm 47d478b8dcbf
 
 pipework br-int -l pf0 dpf0 100.1.1.10/24 00:11:11:11:11:11
 
+*** save container to image
+docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+
+*** file <--> image
+docker save tempest | gzip > tempest.tar.gz
+
+docker load --input tempest.tar.gz
+
 *** Proxy between Docker daemon and the Internet
 #+begin_src shell
 mkdir -p /etc/systemd/system/docker.service.d

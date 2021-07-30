@@ -3,7 +3,7 @@
 * neutron 命令行补全
 1. get completion file from:
 
-https://github.com/openstack/python-neutronclient/blob/master/tools/neutron.bash_completion
+https://github.com/openstack/python-neutronclient/blob/master/tools/neutron.bash_completion 
 
 2. put the file to:
 
