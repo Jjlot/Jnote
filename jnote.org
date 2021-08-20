@@ -20,15 +20,16 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "[]"
   (set-clipboard-coding-system 'euc-cn)
 #+end_src
 
-
 * 乱七八糟
-火币
-
 仿瓷
 
 跑步分泌的多巴胺仅次于谈恋爱：三公里专治各种不爽，五公里专治各种内伤，十公里跑完内心全是坦荡和善良。
 
 内存泄漏检测工具 valgrind
+
+showmebug
+
+codility
 
 * Keymap
 ** Remap Caps-Lock key to Ctrl in CentOS
@@ -179,3 +180,6 @@ refs: https://www.raspberrypi.org/forums/viewtopic.php?t=294014
 
 ** MongoDB
 
+* Windows装机配置
+** WIN10如何关闭微软输入法的繁体简体切换
+https://jingyan.baidu.com/article/948f5924ddb3aed80ef5f97d.html

@@ -1317,6 +1317,26 @@ print(n)
 
   session.close()
 #+end_src
+*** relationship
+#+begin_src python :results output
+  class User(Base):
+      __tablename__ = 'users'
+
+      id = Column(Integer, primary_key=True)
+      name = Column(String)
+      # address属性是一个Address object，Address object通过'user'字段访问我
+      address = relationship("Address", uselist=False, back_populates="user")
+
+  class Address(Base):
+      __tablename__ = 'addresses'
+      id = Column(Integer, primary_key=True)
+      email_address = Column(String, nullable=False)
+
+      user_id = Column(Integer, ForeignKey('users.id'))
+      # user属性是一个User object，User object通过'address'字段访问我
+      user = relationship("User", back_populates="address")
+#+end_src
+
 *** transaction
 with session.begin(subtransactions=True):
 
