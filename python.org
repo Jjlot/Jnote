@@ -1626,3 +1626,5 @@ coverage erase
 了解了send close throw, 再回去看这篇
 https://www.liaoxuefeng.com/wiki/1016959663602400/1017968846697824
 
+** deepcopy
+
